@@ -1,0 +1,77 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="UTF-8">
+    <!-- import CSS -->
+    <title>机器学习算法</title>
+    <link rel="stylesheet" href="https://unpkg.com/element-ui/lib/theme-chalk/index.css">
+</head>
+<body>
+<div id="app" style="margin: 0 auto; width: 1000px">
+    <template>
+        <el-table
+                :data="tableData"
+                stripe
+                align="center"
+                height="400px">
+            {% for feature in features %}
+                <el-table-column
+                        prop="{{ feature }}"
+                        label="{{ feature }}"
+                        width="180"
+                        align="center">
+                </el-table-column>
+            {% endfor %}
+        </el-table>
+    </template>
+
+    <el-row type="flex" justify="space-around" style="margin-top: 10px">
+        <el-button type="primary" plain @click="get_tree" value="id3">生成ID3决策树</el-button>
+        <el-button type="success" plain @click="get_tree" value="cart">生成CART决策树</el-button>
+    </el-row>
+    <div class="algorithms">
+        <img v-bind:src="imgSrc" alt="">
+    </div>
+</div>
+
+
+</body>
+<!-- import Vue before Element -->
+<script src="https://unpkg.com/vue/dist/vue.js"></script>
+<!-- import JavaScript -->
+<script src="https://unpkg.com/element-ui/lib/index.js"></script>
+<script>
+    new Vue({
+        el: '#app',
+        delimiters: ["{[", "]}"],
+        data: function () {
+            return {
+                tableData: [],
+                myTree: '',
+                imgSrc: ''
+            }
+        },
+        created: function () {
+            this.get_data();
+        },
+        methods: {
+            get_data: function () {
+                fetch('/api/get_data')
+                    .then(res => res.json())
+                    .then(result => this.tableData = result.tableData)
+            },
+            get_tree: function (event) {
+                let algorithm = event.target.value
+                this.imgSrc = 'static/images/' + algorithm + '.png'
+                console.log(this.imgSrc)
+                if (algorithm) {
+                    fetch('/api/types?algorithm=' + algorithm)
+                        .then(res => res.json())
+                        .then(result => this.myTree = result.myTree)
+                }
+
+            }
+        }
+    })
+</script>
+</html>
