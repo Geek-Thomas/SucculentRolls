@@ -1,0 +1,15 @@
+humility,outlook,temp,windy,play
+high,sunny,hot,no,no
+high,sunny,hot,yes,no
+high,overcast,hot,no,yes
+high,rainy,mild,no,yes
+normal,rainy,cool,no,yes
+normal,rainy,cool,yes,no
+normal,overcast,cool,yes,yes
+high,sunny,mild,no,no
+normal,sunny,cool,no,yes
+normal,rainy,mild,no,yes
+normal,sunny,mild,yes,yes
+high,overcast,mild,yes,yes
+normal,overcast,hot,no,yes
+high,rainy,mild,yes,no

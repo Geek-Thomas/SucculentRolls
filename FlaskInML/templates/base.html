@@ -1,0 +1,24 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>{% block title %}base模板{% endblock %}</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/base.css') }}">
+    {% block style %}{% endblock %}
+</head>
+<body>
+<div id="head">
+    <a href="{{ url_for('upload_file') }}">上传文件</a>
+</div>
+<div id="content">
+    {% block content %}
+
+    {% endblock %}
+</div>
+
+<div id="footer">
+    <p>&copy;2021</p>
+</div>
+{% block myjs %}{% endblock %}
+</body>
+</html>

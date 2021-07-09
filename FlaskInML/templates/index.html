@@ -1,12 +1,17 @@
-<!DOCTYPE html>
-<html>
-<head>
-    <meta charset="UTF-8">
-    <!-- import CSS -->
-    <title>机器学习算法</title>
+{# 继承base模板 #}
+{% extends 'base.html' %}
+
+{# 继承title代码块 #}
+{% block title %}
+    机器学习算法
+{% endblock %}
+
+{# 继承style代码块 #}
+{% block style %}
     <link rel="stylesheet" href="https://unpkg.com/element-ui/lib/theme-chalk/index.css">
-</head>
-<body>
+{% endblock %}
+
+{% block content %}
 <div id="app" style="margin: 0 auto; width: 1000px">
     <template>
         <el-table
@@ -33,9 +38,9 @@
         <img v-bind:src="imgSrc" alt="">
     </div>
 </div>
+{% endblock %}
 
-
-</body>
+{% block myjs %}
 <!-- import Vue before Element -->
 <script src="https://unpkg.com/vue/dist/vue.js"></script>
 <!-- import JavaScript -->
@@ -52,7 +57,9 @@
             }
         },
         created: function () {
-            this.get_data();
+            if (this.tableData) {
+                this.get_data();
+            }
         },
         methods: {
             get_data: function () {
@@ -74,4 +81,4 @@
         }
     })
 </script>
-</html>
+{% endblock %}

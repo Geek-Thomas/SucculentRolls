@@ -1,0 +1,16 @@
+#head {
+    height: 20px;
+    width: 100%;
+    background-color: antiquewhite;
+}
+
+#content {
+    margin-top: 10px;
+    height: 900px;
+}
+
+#footer {
+    height: 20px;
+    width: 100%;
+    text-align: center;
+}
